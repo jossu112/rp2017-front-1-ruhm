@@ -5,10 +5,14 @@ const List = (props) => {
 
   if (!topics.length) { return null }
 
+  const listItems = topics.map(topic => {
+    return (
+      <li key={topic._id}>{topic.name}</li>
+    )
+  })
+
   return (
-    <ul>
-      <li>{topics[0].name}</li>
-    </ul>
+    <ul>{listItems}</ul>
   )
 }
 
