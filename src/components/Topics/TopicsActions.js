@@ -1,5 +1,5 @@
 import * as types from '../../constants/ActionTypes'
-import Api from '../../utils/api'
+import Api from '../../utils/Api'
 
 export const getTopics = () => dispatch => {
   return Api('GET', '/topics', {})
