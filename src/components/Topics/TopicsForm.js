@@ -1,11 +1,9 @@
 import React from 'react'
 import Api from '../../utils/Api'
 
-class Form extends React.Component {
+class TopicsForm extends React.Component {
   constructor (props) {
     super(props)
-
-    console.log(props)
 
     this.state = {}
 
@@ -21,7 +19,6 @@ class Form extends React.Component {
       data: { name }
     })
       .then(results => {
-        console.log(results)
         const { topic } = results
         const msg = 'Successfully saved topic ' + topic.name
         this.setState({
@@ -43,7 +40,7 @@ class Form extends React.Component {
 
   render () {
     const { msg, error } = this.state
-    console.log('RENDER')
+    console.log('RENDER FORM')
     return (
       <div>
         <p>{ msg || error }</p>
@@ -56,4 +53,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form
+export default TopicsForm
