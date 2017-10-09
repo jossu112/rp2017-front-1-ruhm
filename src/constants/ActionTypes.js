@@ -1,1 +1,2 @@
 export const TOPICS_LOADED = 'TOPICS_LOADED'
+export const TOPIC_SAVED = 'TOPIC_SAVED'

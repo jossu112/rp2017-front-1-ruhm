@@ -11,3 +11,18 @@ export const getTopics = () => dispatch => {
     console.error(error)
   })
 }
+
+export const saveTopic = (name) => dispatch => {
+  return Api('POST', '/topics', {
+    data: { name }
+  })
+  .then(results => {
+    const { topic } = results
+    const msg = 'Successfully saved topic ' + topic.name
+    dispatch({ type: types.TOPIC_SAVED, msg })
+  })
+  .catch(error => {
+    console.error(error)
+    dispatch({ type: types.TOPIC_SAVED, error })
+  })
+}

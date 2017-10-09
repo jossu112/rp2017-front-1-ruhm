@@ -12,7 +12,8 @@ class Topics extends React.Component {
 
   render () {
     console.log('RENDER TOPICS')
-    const { topics, getTopics } = this.props
+    const { topics, getTopics, saveTopic } = this.props
+    // const { msg, error } = topics.save
     console.log(topics)
 
     return (
@@ -21,7 +22,7 @@ class Topics extends React.Component {
         <Link to='/'>Home</Link>
         <br />
         <br />
-        <TopicsForm getTopics={getTopics} />
+        <TopicsForm {...this.props} />
         <CurriculumsForm />
         <br />
         <br />
