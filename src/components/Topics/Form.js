@@ -5,6 +5,8 @@ class Form extends React.Component {
   constructor (props) {
     super(props)
 
+    console.log(props)
+
     this.state = {}
 
     this.saveTopic = this.saveTopic.bind(this)
@@ -25,6 +27,9 @@ class Form extends React.Component {
         this.setState({
           msg,
           error: false
+        }, () => {
+          // kui setState on teostatud
+          this.props.getTopics()
         })
       })
       .catch(error => {

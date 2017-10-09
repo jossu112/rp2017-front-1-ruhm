@@ -12,20 +12,26 @@ class Topics extends React.Component {
     this.state = {
       topics: []
     }
+
+    this.getTopics = this.getTopics.bind(this)
   }
 
   componentDidMount () {
     console.log('load topics')
-    Api('GET', '/topics', {})
-      .then(results => {
-        const { topics } = results
-        console.log(topics)
+    this.getTopics()
+  }
 
-        this.setState({ topics })
-      })
-      .catch(error => {
-        console.error(error)
-      })
+  getTopics () {
+    Api('GET', '/topics', {})
+    .then(results => {
+      const { topics } = results
+      console.log(topics)
+
+      this.setState({ topics })
+    })
+    .catch(error => {
+      console.error(error)
+    })
   }
 
   render () {
@@ -38,7 +44,7 @@ class Topics extends React.Component {
         <Link to='/'>Home</Link>
         <br />
         <br />
-        <Form />
+        <Form getTopics={this.getTopics} />
         <br />
         <br />
         <List topics={topics} />
