@@ -17,8 +17,7 @@ class TopicsForm extends React.Component {
   }
 
   render () {
-    const { save } = this.props.topics
-    const { msg, error } = save
+    const { save: { msg, error, loading } } = this.props.topics
     console.log('RENDER FORM')
 
     const errorMsg = error
@@ -30,7 +29,7 @@ class TopicsForm extends React.Component {
         <p>{ msg || errorMsg }</p>
         <form onSubmit={this.formSubmit}>
           <input id='name' type='text' />
-          <input type='submit' value='save' />
+          <input disabled={loading} type='submit' value='save' />
         </form>
       </div>
     )

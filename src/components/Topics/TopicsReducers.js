@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   data: [],
   save: {
     msg: null,
-    error: null
+    error: null,
+    loading: false
   }
 }
 export default function (state = INITIAL_STATE, action) {
@@ -17,13 +18,24 @@ export default function (state = INITIAL_STATE, action) {
         data: topics
       }
     }
+    case types.TOPIC_SAVE_STARTED: {
+      return {
+        ...state,
+        save: {
+          msg: null,
+          error: null,
+          loading: true
+        }
+      }
+    }
     case types.TOPIC_SAVED: {
       const { msg, error } = action
       return {
         ...state,
         save: {
           msg: msg || null,
-          error: error || null
+          error: error || null,
+          loading: false
         }
       }
     }

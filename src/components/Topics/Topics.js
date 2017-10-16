@@ -12,9 +12,8 @@ class Topics extends React.Component {
 
   render () {
     console.log('RENDER TOPICS')
-    const { topics, getTopics, saveTopic } = this.props
+    const { topics } = this.props
     // const { msg, error } = topics.save
-    console.log(topics)
 
     return (
       <div id='topics'>
