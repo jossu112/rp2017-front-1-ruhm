@@ -1,11 +1,31 @@
 import React from 'react'
 
+import { message } from 'antd'
+
 class TopicsForm extends React.Component {
   constructor (props) {
     super(props)
     console.log(props)
 
     this.formSubmit = this.formSubmit.bind(this)
+  }
+
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps)
+    const { msg, error } = nextProps.topics.save
+    
+    if(msg && this.props.topics.save.msg!=msg){
+      message.success(msg)
+    }
+
+    const errorMsg = error
+    ? error.data.message || error.data.errors[0].msg
+    : null
+
+    if(errorMsg){
+      message.error(errorMsg)
+    }
+
   }
 
   formSubmit (event) {
@@ -19,7 +39,7 @@ class TopicsForm extends React.Component {
   render () {
     const { save: { msg, error, loading } } = this.props.topics
     console.log('RENDER FORM')
-
+        
     const errorMsg = error
       ? error.data.message || error.data.errors[0].msg
       : null
